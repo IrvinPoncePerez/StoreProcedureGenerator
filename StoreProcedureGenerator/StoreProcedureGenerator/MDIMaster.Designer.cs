@@ -51,7 +51,7 @@
             // 
             // tsrStatus_Connection
             // 
-            this.tsrStatus_Connection.Image = ((System.Drawing.Image)(resources.GetObject("tsrStatus_Connection.Image")));
+            this.tsrStatus_Connection.Image = global::StoreProcedureGenerator.Properties.Resources.disconnect;
             this.tsrStatus_Connection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsrStatus_Connection.Name = "tsrStatus_Connection";
             this.tsrStatus_Connection.Size = new System.Drawing.Size(82, 17);
@@ -80,14 +80,14 @@
             // tsmiConnect
             // 
             this.tsmiConnect.Name = "tsmiConnect";
-            this.tsmiConnect.Size = new System.Drawing.Size(152, 22);
+            this.tsmiConnect.Size = new System.Drawing.Size(133, 22);
             this.tsmiConnect.Text = "Connect";
             // 
             // tsmiDisconnect
             // 
             this.tsmiDisconnect.Enabled = false;
             this.tsmiDisconnect.Name = "tsmiDisconnect";
-            this.tsmiDisconnect.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDisconnect.Size = new System.Drawing.Size(133, 22);
             this.tsmiDisconnect.Text = "Disconnect";
             // 
             // MDIMaster
@@ -116,11 +116,11 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip ssrStatus;
-        private System.Windows.Forms.ToolStripStatusLabel tsrStatus_Connection;
         private System.Windows.Forms.MenuStrip msMenus;
         private System.Windows.Forms.ToolStripMenuItem tsmiSession;
         private System.Windows.Forms.ToolStripMenuItem tsmiConnect;
         private System.Windows.Forms.ToolStripMenuItem tsmiDisconnect;
+        public System.Windows.Forms.ToolStripStatusLabel tsrStatus_Connection;
     }
 }
 
