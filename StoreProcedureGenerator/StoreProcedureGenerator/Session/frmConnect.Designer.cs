@@ -33,15 +33,15 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtServerName = new System.Windows.Forms.TextBox();
             this.cmbAuthenticationMode = new System.Windows.Forms.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.cmbServer = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblUserName
@@ -79,14 +79,6 @@
             this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Authentication :";
-            // 
-            // txtServerName
-            // 
-            this.txtServerName.Location = new System.Drawing.Point(143, 30);
-            this.txtServerName.MaxLength = 200;
-            this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(220, 20);
-            this.txtServerName.TabIndex = 1;
             // 
             // cmbAuthenticationMode
             // 
@@ -149,15 +141,6 @@
             this.shapeContainer1.TabIndex = 10;
             this.shapeContainer1.TabStop = false;
             // 
-            // lineShape1
-            // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 20;
-            this.lineShape1.X2 = 400;
-            this.lineShape1.Y1 = 189;
-            this.lineShape1.Y2 = 189;
-            // 
             // lineShape2
             // 
             this.lineShape2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -167,6 +150,24 @@
             this.lineShape2.Y1 = 190;
             this.lineShape2.Y2 = 190;
             // 
+            // lineShape1
+            // 
+            this.lineShape1.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 20;
+            this.lineShape1.X2 = 400;
+            this.lineShape1.Y1 = 189;
+            this.lineShape1.Y2 = 189;
+            // 
+            // cmbServer
+            // 
+            this.cmbServer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbServer.FormattingEnabled = true;
+            this.cmbServer.Location = new System.Drawing.Point(143, 30);
+            this.cmbServer.Name = "cmbServer";
+            this.cmbServer.Size = new System.Drawing.Size(220, 21);
+            this.cmbServer.TabIndex = 1;
+            // 
             // frmConnect
             // 
             this.AcceptButton = this.btnConnect;
@@ -174,12 +175,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(426, 252);
+            this.Controls.Add(this.cmbServer);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.cmbAuthenticationMode);
-            this.Controls.Add(this.txtServerName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblPassword);
@@ -203,7 +204,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtServerName;
         private System.Windows.Forms.ComboBox cmbAuthenticationMode;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUserName;
@@ -212,5 +212,6 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private System.Windows.Forms.ComboBox cmbServer;
     }
 }

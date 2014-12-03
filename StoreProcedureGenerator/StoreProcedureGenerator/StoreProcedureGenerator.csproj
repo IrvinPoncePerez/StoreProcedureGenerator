@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generator\frmDatabases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generator\frmDatabases.Designer.cs">
+      <DependentUpon>frmDatabases.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
       <DependentUpon>frmConnect.cs</DependentUpon>
     </Compile>
     <Compile Include="Static Class\StaticMain.cs" />
+    <EmbeddedResource Include="Generator\frmDatabases.resx">
+      <DependentUpon>frmDatabases.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIMaster.resx">
       <DependentUpon>MDIMaster.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +105,7 @@
   <ItemGroup>
     <None Include="Resources\disconnect.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

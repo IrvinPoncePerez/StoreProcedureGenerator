@@ -1,4 +1,12 @@
-﻿using System;
+﻿/**
+ * About this : This is MDIMaster from StoreProcedureGenerator Application.
+ * Creation Date : 30-Nov-2014
+ * Created By : Irvin Ponce
+ * Last Update Date : 01-Dic-2014
+ * Last Update By : Irvin Ponce 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,9 +16,11 @@ using System.Text;
 using System.Windows.Forms;
 using StoreProcedureGenerator.Session;
 using StoreProcedureGenerator.Static_Class;
+using StoreProcedureGenerator.Generator;
 
 namespace StoreProcedureGenerator
 {
+
     public partial class MDIMaster : Form
     {
 
@@ -22,6 +32,7 @@ namespace StoreProcedureGenerator
 
                 this.tsmiConnect.Click += new EventHandler(tsmiConnect_Click);
                 this.tsmiDisconnect.Click += new EventHandler(tsmiDisconnect_Click);
+                this.tsmiDatabases.Click += new EventHandler(tsmiDatabases_Click);
             }
 
         #endregion
@@ -41,12 +52,21 @@ namespace StoreProcedureGenerator
                 StaticMain.AuthenticationMode = 0;
                 StaticMain.UserName = String.Empty;
                 StaticMain.Password = String.Empty;
-                StaticMain.ConnectionString = String.Empty;
+                StaticMain.ConnectionString = null;
 
                 this.tsrStatus_Connection.Image = global::StoreProcedureGenerator.Properties.Resources.disconnect;
                 this.ConnectionState(false);
             }
 
+            private void tsmiDatabases_Click(object sender, EventArgs e)
+            {
+                frmDatabases objForm = new frmDatabases();
+                objForm.TopLevel = false;
+                objForm.Dock = DockStyle.Fill;
+                pnlLeft.Controls.Add(objForm);
+                pnlLeft.Show();
+                objForm.Show();
+            }
 
         #endregion
 
@@ -67,9 +87,8 @@ namespace StoreProcedureGenerator
 
                 tsmiConnect.Enabled = !state;
                 tsmiDisconnect.Enabled = state;
-
-
-
+                tsmiGenerator.Enabled = state;
+                tsmiDatabases.Enabled = state;
 
             }
 

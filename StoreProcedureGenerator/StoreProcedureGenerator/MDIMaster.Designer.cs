@@ -35,6 +35,9 @@
             this.tsmiSession = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDisconnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGenerator = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDatabases = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlLeft = new System.Windows.Forms.Panel();
             this.ssrStatus.SuspendLayout();
             this.msMenus.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +64,8 @@
             // msMenus
             // 
             this.msMenus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSession});
+            this.tsmiSession,
+            this.tsmiGenerator});
             this.msMenus.Location = new System.Drawing.Point(0, 0);
             this.msMenus.Name = "msMenus";
             this.msMenus.Size = new System.Drawing.Size(935, 24);
@@ -75,26 +79,52 @@
             this.tsmiDisconnect});
             this.tsmiSession.Name = "tsmiSession";
             this.tsmiSession.Size = new System.Drawing.Size(58, 20);
-            this.tsmiSession.Text = "Session";
+            this.tsmiSession.Text = "&Session";
             // 
             // tsmiConnect
             // 
             this.tsmiConnect.Name = "tsmiConnect";
-            this.tsmiConnect.Size = new System.Drawing.Size(133, 22);
-            this.tsmiConnect.Text = "Connect";
+            this.tsmiConnect.Size = new System.Drawing.Size(152, 22);
+            this.tsmiConnect.Text = "&Connect";
             // 
             // tsmiDisconnect
             // 
             this.tsmiDisconnect.Enabled = false;
             this.tsmiDisconnect.Name = "tsmiDisconnect";
-            this.tsmiDisconnect.Size = new System.Drawing.Size(133, 22);
-            this.tsmiDisconnect.Text = "Disconnect";
+            this.tsmiDisconnect.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDisconnect.Text = "D&isconnect";
+            // 
+            // tsmiGenerator
+            // 
+            this.tsmiGenerator.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDatabases});
+            this.tsmiGenerator.Enabled = false;
+            this.tsmiGenerator.Name = "tsmiGenerator";
+            this.tsmiGenerator.Size = new System.Drawing.Size(71, 20);
+            this.tsmiGenerator.Text = "&Generator";
+            // 
+            // tsmiDatabases
+            // 
+            this.tsmiDatabases.Enabled = false;
+            this.tsmiDatabases.Name = "tsmiDatabases";
+            this.tsmiDatabases.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDatabases.Text = "&Databases";
+            // 
+            // pnlLeft
+            // 
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Location = new System.Drawing.Point(0, 24);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Size = new System.Drawing.Size(250, 455);
+            this.pnlLeft.TabIndex = 5;
+            this.pnlLeft.Visible = false;
             // 
             // MDIMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 501);
+            this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.ssrStatus);
             this.Controls.Add(this.msMenus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -121,6 +151,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiConnect;
         private System.Windows.Forms.ToolStripMenuItem tsmiDisconnect;
         public System.Windows.Forms.ToolStripStatusLabel tsrStatus_Connection;
+        private System.Windows.Forms.ToolStripMenuItem tsmiGenerator;
+        private System.Windows.Forms.Panel pnlLeft;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDatabases;
     }
 }
 

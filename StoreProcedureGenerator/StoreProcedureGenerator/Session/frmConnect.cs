@@ -1,7 +1,16 @@
-﻿using System;
+﻿/**
+ * About this : This form connect to SQL Server.
+ * Creation Date : 30-Nov-2014
+ * Created By : Irvin Ponce
+ * Last Update Date : 01-Dic-2014
+ * Last Update By : Irvin Ponce 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Sql;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,6 +41,25 @@ namespace StoreProcedureGenerator.Session
             private void frmConnect_Load(object sender, EventArgs e)
             {
                 cmbAuthenticationMode.SelectedIndex = 0;
+
+                SqlDataSourceEnumerator objDse = SqlDataSourceEnumerator.Instance;
+                DataTable objTable = objDse.GetDataSources();
+
+                if (objTable == null)
+                {
+                    MessageBox.Show("Servers no found!",
+                                    "Session",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+                else
+                {
+                    foreach (DataRow objRow in objTable.Rows)
+                    {
+                        cmbServer.Items.Add(objRow["ServerName"].ToString() + "\\" + objRow["InstanceName"].ToString());
+                        cmbServer.SelectedIndex = 0;
+                    }
+                }
             }
 
             private void cmbAuthenticationMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,13 +90,13 @@ namespace StoreProcedureGenerator.Session
             private void btnConnect_Click(object sender, EventArgs e)
             {
                 MDIMaster mdi = this.MdiParent as MDIMaster;
-                StaticMain.ServerName = this.txtServerName.Text;
+                StaticMain.ServerName = (String)this.cmbServer.SelectedItem;
                 StaticMain.AuthenticationMode = this.cmbAuthenticationMode.SelectedIndex;
                 StaticMain.UserName = this.txtUserName.Text;
                 StaticMain.Password = this.txtPassword.Text;
                 StaticMain.goMain();
 
-                SqlConnection objConnection = new SqlConnection(StaticMain.ConnectionString);
+                SqlConnection objConnection = StaticMain.Connection;
                 try
                 {
                     objConnection.Open();
