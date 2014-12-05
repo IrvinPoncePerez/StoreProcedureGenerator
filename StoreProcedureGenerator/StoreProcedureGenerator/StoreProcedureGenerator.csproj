@@ -48,11 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generator\frmDatabases.cs">
+    <Compile Include="MDIChildrens\frmSetTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generator\frmDatabases.Designer.cs">
-      <DependentUpon>frmDatabases.cs</DependentUpon>
+    <Compile Include="MDIChildrens\frmSetTemplate.Designer.cs">
+      <DependentUpon>frmSetTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmObjectExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmObjectExplorer.Designer.cs">
+      <DependentUpon>frmObjectExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIMaster.cs">
       <SubType>Form</SubType>
@@ -69,24 +80,31 @@
       <DependentUpon>frmConnect.cs</DependentUpon>
     </Compile>
     <Compile Include="Static Class\StaticMain.cs" />
-    <EmbeddedResource Include="Generator\frmDatabases.resx">
-      <DependentUpon>frmDatabases.cs</DependentUpon>
+    <Compile Include="View\frmTemplates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmTemplates.Designer.cs">
+      <DependentUpon>frmTemplates.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MDIChildrens\frmSetTemplate.resx">
+      <DependentUpon>frmSetTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmObjectExplorer.resx">
+      <DependentUpon>frmObjectExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIMaster.resx">
       <DependentUpon>MDIMaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Session\frmConnect.resx">
       <DependentUpon>frmConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmTemplates.resx">
+      <DependentUpon>frmTemplates.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -104,6 +122,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\disconnect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InternalDB.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\add.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\alter.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

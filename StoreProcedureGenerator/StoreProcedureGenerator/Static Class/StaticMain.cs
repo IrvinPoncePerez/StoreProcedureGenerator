@@ -28,6 +28,7 @@ namespace StoreProcedureGenerator.Static_Class
             static public string Password { get; set; }
             static public SqlConnectionStringBuilder ConnectionString { get; set; }
             static public SqlConnection Connection { get; set; }
+            static public MDIMaster MDIMaster { get; set; }
 
         #endregion
 

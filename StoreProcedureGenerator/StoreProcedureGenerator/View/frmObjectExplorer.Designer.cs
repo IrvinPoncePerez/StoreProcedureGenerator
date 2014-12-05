@@ -1,6 +1,6 @@
-﻿namespace StoreProcedureGenerator.Generator
+﻿namespace StoreProcedureGenerator.View
 {
-    partial class frmDatabases
+    partial class frmObjectExplorer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatabases));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmObjectExplorer));
             this.tvwObjectExplorer = new System.Windows.Forms.TreeView();
             this.imgNodes = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             this.imgNodes.Images.SetKeyName(0, "database.png");
             this.imgNodes.Images.SetKeyName(1, "table.png");
             // 
-            // frmDatabases
+            // frmObjectExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -59,8 +59,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmDatabases";
-            this.Text = "Databases";
+            this.Name = "frmObjectExplorer";
+            this.Text = "Object Explorer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 

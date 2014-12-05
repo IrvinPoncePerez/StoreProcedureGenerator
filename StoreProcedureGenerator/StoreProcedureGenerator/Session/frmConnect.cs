@@ -122,7 +122,7 @@ namespace StoreProcedureGenerator.Session
                 catch (Exception ex)
                 {
                     mdi.ConnectionState(false);
-                    MessageBox.Show("Failed Connection!",
+                    MessageBox.Show("Failed Connection - " + ex.Message,
                                         "Session",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error);

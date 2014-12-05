@@ -9,14 +9,14 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using StoreProcedureGenerator.Static_Class;
 
-namespace StoreProcedureGenerator.Generator
+namespace StoreProcedureGenerator.View
 {
-    public partial class frmDatabases : Form
+    public partial class frmObjectExplorer : Form
     {
 
         #region "Initialize Components"
 
-        public frmDatabases()
+        public frmObjectExplorer()
             {
                 InitializeComponent();
 
@@ -24,12 +24,6 @@ namespace StoreProcedureGenerator.Generator
                 this.Load += new EventHandler(frmDatabases_Load);
                 this.Move += new System.EventHandler(this.frmDatabases_Move);
             }
-
-        #endregion
-
-        #region "Form Attributes"
-
-            
 
         #endregion
 

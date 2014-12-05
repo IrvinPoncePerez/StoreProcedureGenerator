@@ -36,8 +36,10 @@
             this.tsmiConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDisconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGenerator = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDatabases = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiObjectExplorer = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLeft = new System.Windows.Forms.Panel();
+            this.tsmiTemplates = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlRight = new System.Windows.Forms.Panel();
             this.ssrStatus.SuspendLayout();
             this.msMenus.SuspendLayout();
             this.SuspendLayout();
@@ -78,8 +80,8 @@
             this.tsmiConnect,
             this.tsmiDisconnect});
             this.tsmiSession.Name = "tsmiSession";
-            this.tsmiSession.Size = new System.Drawing.Size(58, 20);
-            this.tsmiSession.Text = "&Session";
+            this.tsmiSession.Size = new System.Drawing.Size(70, 20);
+            this.tsmiSession.Text = "  &Session  ";
             // 
             // tsmiConnect
             // 
@@ -97,18 +99,19 @@
             // tsmiGenerator
             // 
             this.tsmiGenerator.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiDatabases});
+            this.tsmiObjectExplorer,
+            this.tsmiTemplates});
             this.tsmiGenerator.Enabled = false;
             this.tsmiGenerator.Name = "tsmiGenerator";
             this.tsmiGenerator.Size = new System.Drawing.Size(71, 20);
-            this.tsmiGenerator.Text = "&Generator";
+            this.tsmiGenerator.Text = "     &View    ";
             // 
-            // tsmiDatabases
+            // tsmiObjectExplorer
             // 
-            this.tsmiDatabases.Enabled = false;
-            this.tsmiDatabases.Name = "tsmiDatabases";
-            this.tsmiDatabases.Size = new System.Drawing.Size(152, 22);
-            this.tsmiDatabases.Text = "&Databases";
+            this.tsmiObjectExplorer.Enabled = false;
+            this.tsmiObjectExplorer.Name = "tsmiObjectExplorer";
+            this.tsmiObjectExplorer.Size = new System.Drawing.Size(154, 22);
+            this.tsmiObjectExplorer.Text = "&Object Explorer";
             // 
             // pnlLeft
             // 
@@ -119,11 +122,28 @@
             this.pnlLeft.TabIndex = 5;
             this.pnlLeft.Visible = false;
             // 
+            // tsmiTemplates
+            // 
+            this.tsmiTemplates.Enabled = false;
+            this.tsmiTemplates.Name = "tsmiTemplates";
+            this.tsmiTemplates.Size = new System.Drawing.Size(154, 22);
+            this.tsmiTemplates.Text = "&Templates";
+            // 
+            // pnlRight
+            // 
+            this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlRight.Location = new System.Drawing.Point(685, 24);
+            this.pnlRight.Name = "pnlRight";
+            this.pnlRight.Size = new System.Drawing.Size(250, 455);
+            this.pnlRight.TabIndex = 7;
+            this.pnlRight.Visible = false;
+            // 
             // MDIMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 501);
+            this.Controls.Add(this.pnlRight);
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.ssrStatus);
             this.Controls.Add(this.msMenus);
@@ -153,7 +173,9 @@
         public System.Windows.Forms.ToolStripStatusLabel tsrStatus_Connection;
         private System.Windows.Forms.ToolStripMenuItem tsmiGenerator;
         private System.Windows.Forms.Panel pnlLeft;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDatabases;
+        private System.Windows.Forms.ToolStripMenuItem tsmiObjectExplorer;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTemplates;
+        private System.Windows.Forms.Panel pnlRight;
     }
 }
 

@@ -22,5 +22,15 @@ namespace StoreProcedureGenerator.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\InternalDB.sdf")]
+        public string InternalConnection {
+            get {
+                return ((string)(this["InternalConnection"]));
+            }
+        }
     }
 }

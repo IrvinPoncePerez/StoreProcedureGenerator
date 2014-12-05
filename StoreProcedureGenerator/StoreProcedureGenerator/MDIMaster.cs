@@ -16,7 +16,7 @@ using System.Text;
 using System.Windows.Forms;
 using StoreProcedureGenerator.Session;
 using StoreProcedureGenerator.Static_Class;
-using StoreProcedureGenerator.Generator;
+using StoreProcedureGenerator.View;
 
 namespace StoreProcedureGenerator
 {
@@ -30,9 +30,11 @@ namespace StoreProcedureGenerator
             {
                 InitializeComponent();
 
+                this.Load += new EventHandler(MDIMaster_Load);
                 this.tsmiConnect.Click += new EventHandler(tsmiConnect_Click);
                 this.tsmiDisconnect.Click += new EventHandler(tsmiDisconnect_Click);
-                this.tsmiDatabases.Click += new EventHandler(tsmiDatabases_Click);
+                this.tsmiObjectExplorer.Click += new EventHandler(tsmiObjectExplorer_Click);
+                this.tsmiTemplates.Click += new EventHandler(tsmiTemplates_Click);
             }
 
         #endregion
@@ -58,13 +60,23 @@ namespace StoreProcedureGenerator
                 this.ConnectionState(false);
             }
 
-            private void tsmiDatabases_Click(object sender, EventArgs e)
+            private void tsmiObjectExplorer_Click(object sender, EventArgs e)
             {
-                frmDatabases objForm = new frmDatabases();
+                frmObjectExplorer objForm = new frmObjectExplorer();
                 objForm.TopLevel = false;
                 objForm.Dock = DockStyle.Fill;
                 pnlLeft.Controls.Add(objForm);
                 pnlLeft.Show();
+                objForm.Show();
+            }
+
+            private void tsmiTemplates_Click(object sender, EventArgs e)
+            {
+                frmTemplates objForm = new frmTemplates();
+                objForm.TopLevel = false;
+                objForm.Dock = DockStyle.Fill;
+                pnlRight.Controls.Add(objForm);
+                pnlRight.Show();
                 objForm.Show();
             }
 
@@ -88,8 +100,18 @@ namespace StoreProcedureGenerator
                 tsmiConnect.Enabled = !state;
                 tsmiDisconnect.Enabled = state;
                 tsmiGenerator.Enabled = state;
-                tsmiDatabases.Enabled = state;
+                tsmiObjectExplorer.Enabled = state;
+                tsmiTemplates.Enabled = state;
 
+            }
+
+        #endregion
+
+        #region "Form Events"
+
+            private void MDIMaster_Load(object sender, EventArgs e)
+            {
+                StaticMain.MDIMaster = this;
             }
 
         #endregion
