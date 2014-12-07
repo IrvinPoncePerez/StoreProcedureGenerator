@@ -137,6 +137,7 @@
             this.txtTemplateCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTemplateCode.BackColor = System.Drawing.SystemColors.Control;
             this.txtTemplateCode.Location = new System.Drawing.Point(117, 163);
             this.txtTemplateCode.Name = "txtTemplateCode";
             this.txtTemplateCode.Size = new System.Drawing.Size(461, 242);

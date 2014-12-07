@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTemplates));
             this.btnCreateTemplate = new System.Windows.Forms.Button();
             this.btnUpdateTemplate = new System.Windows.Forms.Button();
             this.btnRemoveTemplate = new System.Windows.Forms.Button();
             this.tvwTemplates = new System.Windows.Forms.TreeView();
+            this.imgNodes = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // btnCreateTemplate
@@ -74,10 +76,21 @@
             // tvwTemplates
             // 
             this.tvwTemplates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvwTemplates.HideSelection = false;
+            this.tvwTemplates.ImageIndex = 0;
+            this.tvwTemplates.ImageList = this.imgNodes;
             this.tvwTemplates.Location = new System.Drawing.Point(0, 0);
             this.tvwTemplates.Name = "tvwTemplates";
+            this.tvwTemplates.SelectedImageIndex = 0;
             this.tvwTemplates.Size = new System.Drawing.Size(284, 192);
             this.tvwTemplates.TabIndex = 0;
+            // 
+            // imgNodes
+            // 
+            this.imgNodes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgNodes.ImageStream")));
+            this.imgNodes.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgNodes.Images.SetKeyName(0, "folder.png");
+            this.imgNodes.Images.SetKeyName(1, "code.png");
             // 
             // frmTemplates
             // 
@@ -105,5 +118,6 @@
         private System.Windows.Forms.Button btnUpdateTemplate;
         private System.Windows.Forms.Button btnRemoveTemplate;
         private System.Windows.Forms.TreeView tvwTemplates;
+        private System.Windows.Forms.ImageList imgNodes;
     }
 }
