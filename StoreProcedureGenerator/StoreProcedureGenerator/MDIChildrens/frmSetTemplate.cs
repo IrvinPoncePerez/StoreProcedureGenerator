@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace StoreProcedureGenerator.MDIChildrens
 {
@@ -20,19 +23,34 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                 this.Load += new EventHandler(frmSetTemplate_Load);
                 this.FormClosing += new FormClosingEventHandler(frmSetTemplate_FormClosing);
+
+                objTemplate = new Template();
+            }
+
+            public frmSetTemplate(Template tmp) : this()
+            {
+                objTemplate = tmp;
             }
 
         #endregion
 
         #region "Form Attributes"
 
-            private int Id_Template;
-            private string TemplateName;
-            private string FileName;
-            private string Author;
-            private string Description;
-            private string Extension;
-            private string[] TemplateCode;
+            Template objTemplate;
+            string[] KeyWords = {"<Database_Name>", 
+                                 "<Author>|<Creation_Date>|<Description>", 
+                                 "<Schema>",
+                                 "<Table_Name>",
+                                 "<Data_Type>", 
+                                 "<Params>", 
+                                 "<Attribute>|<@Attribute>"};
+            Color[] colors = {Color.Red,
+                              Color.DarkGray, 
+                              Color.Aqua,
+                              Color.Blue,
+                              Color.Pink,
+                              Color.Fuchsia,
+                              Color.Green};
 
         #endregion
 
@@ -40,7 +58,17 @@ namespace StoreProcedureGenerator.MDIChildrens
 
             private void frmSetTemplate_Load(object sender, EventArgs e)
             {
-                
+                if (objTemplate != null)
+                {
+                    txtTemplateName.Text = objTemplate.TemplateName;
+                    txtFileName.Text = objTemplate.FileName;
+                    txtAuthor.Text = objTemplate.Author;
+                    txtDescription.Text = objTemplate.Description;
+                    txtExtension.Text = objTemplate.Extension;
+                    txtTemplateCode.Lines = objTemplate.TemplateCode;
+                }
+
+                this.CheckKeywords();
             }
 
             private void frmSetTemplate_FormClosing(object sender, FormClosingEventArgs e)
@@ -56,10 +84,22 @@ namespace StoreProcedureGenerator.MDIChildrens
                         e.Cancel = true;
                     }
                     else if (objResult == System.Windows.Forms.DialogResult.Yes)
-                    {
+                    {                       
+                        objTemplate.TemplateName = txtTemplateName.Text;
+                        objTemplate.FileName = txtFileName.Text;
+                        objTemplate.Author = txtAuthor.Text;
+                        objTemplate.Description = txtDescription.Text;
+                        objTemplate.Extension = txtExtension.Text;
+                        objTemplate.TemplateCode = txtTemplateCode.Lines;
 
+                        FileStream objStream = new FileStream(Application.StartupPath + "\\Templates\\" + txtTemplateName.Text + ".tml", FileMode.Create);
+                        XmlSerializer objSerializer = new XmlSerializer(objTemplate.GetType());
+                        objSerializer.Serialize(objStream, objTemplate);
+                        objStream.Close();
                     }
                 }
+
+
             }
 
         #endregion
@@ -100,6 +140,31 @@ namespace StoreProcedureGenerator.MDIChildrens
                 }
 
                 return true;
+            }
+
+        #endregion
+
+        #region Form Methods"
+
+            private void CheckKeywords()
+            {
+                
+                System.Drawing.Font objFont = txtTemplateCode.SelectionFont;
+                System.Drawing.FontStyle objFontStyle = FontStyle.Bold;
+
+                for (int i = 0; i < this.KeyWords.Length ; i++)
+                {
+                    Regex objRegex = new Regex(KeyWords[i]);
+
+                    foreach (Match objMatch in objRegex.Matches(txtTemplateCode.Text))
+                    {
+                        txtTemplateCode.Select(objMatch.Index, objMatch.Length);
+                        txtTemplateCode.SelectionFont = new Font(objFont.FontFamily, objFont.Size, objFontStyle);
+                        txtTemplateCode.SelectionColor = colors[i];
+                    }
+
+                }
+
             }
 
         #endregion
