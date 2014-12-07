@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MDIChildrens\frmCodeGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIChildrens\frmCodeGenerator.Designer.cs">
+      <DependentUpon>frmCodeGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIChildrens\frmSetTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="View\frmTemplates.Designer.cs">
       <DependentUpon>frmTemplates.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MDIChildrens\frmCodeGenerator.resx">
+      <DependentUpon>frmCodeGenerator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIChildrens\frmSetTemplate.resx">
       <DependentUpon>frmSetTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +174,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\generate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

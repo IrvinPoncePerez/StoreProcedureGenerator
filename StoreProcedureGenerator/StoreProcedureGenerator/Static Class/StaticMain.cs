@@ -29,6 +29,7 @@ namespace StoreProcedureGenerator.Static_Class
             static public SqlConnectionStringBuilder ConnectionString { get; set; }
             static public SqlConnection Connection { get; set; }
             static public MDIMaster MDIMaster { get; set; }
+            static public string DefaultPath { get; set; }
 
         #endregion
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using StoreProcedureGenerator.Static_Class;
+using StoreProcedureGenerator.MDIChildrens;
 
 namespace StoreProcedureGenerator.View
 {
@@ -23,6 +24,7 @@ namespace StoreProcedureGenerator.View
                 this.FormClosed += new FormClosedEventHandler(frmDatabases_FormClosed);
                 this.Load += new EventHandler(frmDatabases_Load);
                 this.Move += new System.EventHandler(this.frmDatabases_Move);
+                this.tvwObjectExplorer.NodeMouseDoubleClick += new TreeNodeMouseClickEventHandler(tvwObjectExplorer_NodeMouseDoubleClick);
             }
 
         #endregion
@@ -121,6 +123,30 @@ namespace StoreProcedureGenerator.View
                 }
 
                 return objDataTable;
+
+            }
+
+        #endregion
+
+        #region "Form Actions"
+
+            private void tvwObjectExplorer_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+            {
+                TreeNode objChildNode = e.Node;
+                TreeNode objParentNode = null;
+                string database_name = null;
+                string table_name = null;
+
+                if (objChildNode.ImageIndex == 1)
+                {
+                    objParentNode = objChildNode.Parent;
+                    database_name = objParentNode.Text;
+                    table_name = objChildNode.Text;
+
+                    frmCodeGenerator objCodeGenerator = new frmCodeGenerator(database_name, table_name);
+                    objCodeGenerator.MdiParent = StaticMain.MDIMaster;
+                    objCodeGenerator.Show();
+                }
 
             }
 
