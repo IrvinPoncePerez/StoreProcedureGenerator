@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using StoreProcedureGenerator.Session;
 using StoreProcedureGenerator.Static_Class;
 using StoreProcedureGenerator.View;
+using StoreProcedureGenerator.MDIChildrens;
 
 namespace StoreProcedureGenerator
 {
@@ -35,6 +36,7 @@ namespace StoreProcedureGenerator
                 this.tsmiDisconnect.Click += new EventHandler(tsmiDisconnect_Click);
                 this.tsmiObjectExplorer.Click += new EventHandler(tsmiObjectExplorer_Click);
                 this.tsmiTemplates.Click += new EventHandler(tsmiTemplates_Click);
+                this.tsmiDataTypes.Click += new EventHandler(tsmiDataTypes_Click);
             }
 
         #endregion
@@ -80,6 +82,13 @@ namespace StoreProcedureGenerator
                 objForm.Show();
             }
 
+            private void tsmiDataTypes_Click(object sender, EventArgs e)
+            {
+                frmDataTypesDefinition objDataTypes = new frmDataTypesDefinition();
+                objDataTypes.MdiParent = this;
+                objDataTypes.Show();
+            }
+
         #endregion
 
         #region "Form Methods"
@@ -102,6 +111,8 @@ namespace StoreProcedureGenerator
                 tsmiGenerator.Enabled = state;
                 tsmiObjectExplorer.Enabled = state;
                 tsmiTemplates.Enabled = state;
+                tsmiSettings.Enabled = state;
+                tsmiDataTypes.Enabled = state;
 
             }
 

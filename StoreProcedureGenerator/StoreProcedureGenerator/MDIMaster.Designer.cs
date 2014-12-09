@@ -37,8 +37,10 @@
             this.tsmiDisconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGenerator = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiObjectExplorer = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlLeft = new System.Windows.Forms.Panel();
             this.tsmiTemplates = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDataTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlLeft = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.ssrStatus.SuspendLayout();
             this.msMenus.SuspendLayout();
@@ -67,7 +69,8 @@
             // 
             this.msMenus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiSession,
-            this.tsmiGenerator});
+            this.tsmiGenerator,
+            this.tsmiSettings});
             this.msMenus.Location = new System.Drawing.Point(0, 0);
             this.msMenus.Name = "msMenus";
             this.msMenus.Size = new System.Drawing.Size(935, 24);
@@ -86,15 +89,15 @@
             // tsmiConnect
             // 
             this.tsmiConnect.Name = "tsmiConnect";
-            this.tsmiConnect.Size = new System.Drawing.Size(152, 22);
+            this.tsmiConnect.Size = new System.Drawing.Size(133, 22);
             this.tsmiConnect.Text = "&Connect";
             // 
             // tsmiDisconnect
             // 
             this.tsmiDisconnect.Enabled = false;
             this.tsmiDisconnect.Name = "tsmiDisconnect";
-            this.tsmiDisconnect.Size = new System.Drawing.Size(152, 22);
-            this.tsmiDisconnect.Text = "D&isconnect";
+            this.tsmiDisconnect.Size = new System.Drawing.Size(133, 22);
+            this.tsmiDisconnect.Text = "&Disconnect";
             // 
             // tsmiGenerator
             // 
@@ -113,6 +116,29 @@
             this.tsmiObjectExplorer.Size = new System.Drawing.Size(154, 22);
             this.tsmiObjectExplorer.Text = "&Object Explorer";
             // 
+            // tsmiTemplates
+            // 
+            this.tsmiTemplates.Enabled = false;
+            this.tsmiTemplates.Name = "tsmiTemplates";
+            this.tsmiTemplates.Size = new System.Drawing.Size(154, 22);
+            this.tsmiTemplates.Text = "&Templates";
+            // 
+            // tsmiSettings
+            // 
+            this.tsmiSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDataTypes});
+            this.tsmiSettings.Enabled = false;
+            this.tsmiSettings.Name = "tsmiSettings";
+            this.tsmiSettings.Size = new System.Drawing.Size(76, 20);
+            this.tsmiSettings.Text = "   S&ettings  ";
+            // 
+            // tsmiDataTypes
+            // 
+            this.tsmiDataTypes.Enabled = false;
+            this.tsmiDataTypes.Name = "tsmiDataTypes";
+            this.tsmiDataTypes.Size = new System.Drawing.Size(132, 22);
+            this.tsmiDataTypes.Text = "D&ata Types";
+            // 
             // pnlLeft
             // 
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -121,13 +147,6 @@
             this.pnlLeft.Size = new System.Drawing.Size(250, 455);
             this.pnlLeft.TabIndex = 5;
             this.pnlLeft.Visible = false;
-            // 
-            // tsmiTemplates
-            // 
-            this.tsmiTemplates.Enabled = false;
-            this.tsmiTemplates.Name = "tsmiTemplates";
-            this.tsmiTemplates.Size = new System.Drawing.Size(154, 22);
-            this.tsmiTemplates.Text = "&Templates";
             // 
             // pnlRight
             // 
@@ -176,6 +195,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiObjectExplorer;
         private System.Windows.Forms.ToolStripMenuItem tsmiTemplates;
         private System.Windows.Forms.Panel pnlRight;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDataTypes;
     }
 }
 
