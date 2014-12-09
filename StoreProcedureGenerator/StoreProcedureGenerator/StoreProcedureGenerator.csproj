@@ -69,6 +69,12 @@
     <Compile Include="MDIChildrens\frmCodeGenerator.Designer.cs">
       <DependentUpon>frmCodeGenerator.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDIChildrens\frmDataTypesDefinition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIChildrens\frmDataTypesDefinition.Designer.cs">
+      <DependentUpon>frmDataTypesDefinition.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIChildrens\frmSetTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="MDIChildrens\frmCodeGenerator.resx">
       <DependentUpon>frmCodeGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIChildrens\frmDataTypesDefinition.resx">
+      <DependentUpon>frmDataTypesDefinition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIChildrens\frmSetTemplate.resx">
       <DependentUpon>frmSetTemplate.cs</DependentUpon>

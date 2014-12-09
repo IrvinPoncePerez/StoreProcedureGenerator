@@ -125,6 +125,10 @@ namespace StoreProcedureGenerator.View
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message,
+                                    "Open Templates",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
 
                 frmSetTemplate objFormTemplate = new frmSetTemplate(objTemplate);

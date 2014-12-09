@@ -23,6 +23,7 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                 this.Load += new EventHandler(frmSetTemplate_Load);
                 this.FormClosing += new FormClosingEventHandler(frmSetTemplate_FormClosing);
+                this.txtExtension.KeyPress += new KeyPressEventHandler(txtExtension_KeyPress);
 
                 objTemplate = new Template();
             }
@@ -100,6 +101,22 @@ namespace StoreProcedureGenerator.MDIChildrens
                 }
 
 
+            }
+
+            private void txtExtension_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (char.IsLetter(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else if (char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
 
         #endregion
