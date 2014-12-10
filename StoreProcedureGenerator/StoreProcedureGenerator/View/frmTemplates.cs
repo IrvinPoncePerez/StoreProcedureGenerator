@@ -154,6 +154,10 @@ namespace StoreProcedureGenerator.View
                     }
                     catch (Exception ex)
                     {
+                        MessageBox.Show(ex.Message,
+                                        "Remove Template",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
                     }
                 }
 

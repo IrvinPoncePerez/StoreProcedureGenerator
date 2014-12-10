@@ -66,8 +66,6 @@
             // 
             // dgvDataTypes
             // 
-            this.dgvDataTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvDataTypes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDataTypes.BackgroundColor = System.Drawing.Color.White;
             this.dgvDataTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataTypes.Dock = System.Windows.Forms.DockStyle.Fill;

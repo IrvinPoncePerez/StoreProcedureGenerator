@@ -49,6 +49,8 @@
             // 
             // dgvTableView
             // 
+            this.dgvTableView.AllowUserToAddRows = false;
+            this.dgvTableView.AllowUserToDeleteRows = false;
             this.dgvTableView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -68,6 +70,7 @@
             this.dgvTableView.Location = new System.Drawing.Point(12, 12);
             this.dgvTableView.MultiSelect = false;
             this.dgvTableView.Name = "dgvTableView";
+            this.dgvTableView.ReadOnly = true;
             this.dgvTableView.RowHeadersVisible = false;
             this.dgvTableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTableView.Size = new System.Drawing.Size(560, 314);

@@ -51,6 +51,12 @@ namespace StoreProcedureGenerator.MDIChildrens
                 }
 
                 dgvDataTypes.DataSource = objDataTypes;
+
+                foreach (DataGridViewTextBoxColumn objColumn in dgvDataTypes.Columns)
+                {
+                    objColumn.Width = 120;
+                    objColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
 
             private void txtExtension_KeyPress(object sender, KeyPressEventArgs e)

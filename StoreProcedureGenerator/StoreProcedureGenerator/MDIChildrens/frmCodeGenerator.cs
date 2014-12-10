@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using StoreProcedureGenerator.Static_Class;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace StoreProcedureGenerator.MDIChildrens
 {
@@ -22,6 +24,7 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                 this.btnChangeDirectory.Click += new EventHandler(btnChangeDirectory_Click);
                 this.Load += new EventHandler(frmCodeGenerator_Load);
+                this.btnCodeGenerator.Click += new EventHandler(btnCodeGenerator_Click);
             }
 
             public frmCodeGenerator(string database_name, string table_name) : this()
@@ -52,6 +55,29 @@ namespace StoreProcedureGenerator.MDIChildrens
                 {
                     txtPath.Text = fbdBrowser.SelectedPath;
                     StaticMain.DefaultPath = fbdBrowser.SelectedPath;
+                }
+            }
+
+            private void btnCodeGenerator_Click(object sender, EventArgs e)
+            {
+                if (txtPath.Text != string.Empty)
+                {
+                    foreach (string objFileTemplate in Directory.GetFiles(Application.StartupPath + "\\Templates\\"))
+                    {
+                        FileStream objFileStream = new FileStream(objFileTemplate, FileMode.Open);
+                        XmlSerializer objSerializer = new XmlSerializer(typeof(Template));
+                        Template objTemplate = new Template();
+                        objTemplate = (Template)objSerializer.Deserialize(objFileStream);
+                        objFileStream.Close();
+
+                        if (this.ProcessTemplate(objTemplate))
+                        {
+                            MessageBox.Show("Template " + objTemplate.TemplateName + " created!",
+                                            "Code Generator",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+                        }
+                    }
                 }
             }
 
@@ -128,11 +154,43 @@ namespace StoreProcedureGenerator.MDIChildrens
                 return objDataTable;
             }
 
+            private bool ProcessTemplate(Template objTemplate)
+            {
+                string path = txtPath.Text + "\\" + this.schema_name + "." + this.table_name + "\\";
+                Directory.CreateDirectory(path);
+
+                StreamWriter objFile = null;
+                objFile = this.CreateFile(path, objTemplate);
+
+                objFile.Close();
+
+                return true;
+            }
+
+            private StreamWriter CreateFile(string path, Template objTemplate)
+            {
+                StreamWriter objFile = null;
+
+                try
+                {
+                    path += objTemplate.FileName.Replace("<Table_Name>", this.table_name.ToUpper());
+                    path += "." + objTemplate.Extension;
+                    objFile = new StreamWriter(path);
+                }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(objTemplate.FileName + " - " + objTemplate.TemplateName + " - " + ex.Message,
+                                    "Create File",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+
+                return objFile;
+            }
+
         #endregion
 
-        #region "Form Methods"
-
-            
+        #region "Form Methods"            
 
         #endregion
 
