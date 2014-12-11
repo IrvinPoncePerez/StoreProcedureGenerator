@@ -161,7 +161,7 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                 StreamWriter objFile = null;
                 objFile = this.CreateFile(path, objTemplate);
-
+                this.WriteFile(objFile, objTemplate);
                 objFile.Close();
 
                 return true;
@@ -188,9 +188,72 @@ namespace StoreProcedureGenerator.MDIChildrens
                 return objFile;
             }
 
+            private string getDate()
+            {
+                string objTime = null;
+                SqlCommand objCommand = new SqlCommand();
+                objCommand.Connection = StaticMain.Connection;
+                objCommand.CommandType = CommandType.Text;
+                objCommand.CommandText = "SELECT CONVERT(NVARCHAR, GETDATE(), 100)";
+                StaticMain.Connection.Open();
+
+                try
+                {
+                    objTime = (string)objCommand.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                                    "Get Date",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    StaticMain.Connection.Close();
+                }
+
+                return objTime;
+            }
+
         #endregion
 
-        #region "Form Methods"            
+        #region "Form Methods"
+        
+            private void WriteFile(StreamWriter objFile, Template objTemplate)
+            {
+                foreach (string lineCode in objTemplate.TemplateCode)
+                {
+                    string line = lineCode;
+
+                    if (lineCode.Contains("<Database_Name>"))
+                    {
+                        line = line.Replace("<Database_Name>", this.database_name);
+                    }
+
+                    if (lineCode.Contains("<Schema>"))
+                    {
+                        line = line.Replace("<Schema>", this.schema_name);
+                    }
+
+                    if (lineCode.Contains("<Table_Name>"))
+                    {
+                        line = line.Replace("<Table_Name>", this.table_name);
+                    }
+
+                    if (lineCode.Contains("<Creation_Date>"))
+                    {
+                        line = line.Replace("<Creation_Date>", this.getDate());
+                    }
+
+                    if (lineCode.Contains("<Params>"))
+                    {
+                        //working here.
+                    }
+
+                    objFile.WriteLine(line);
+                }
+            }
 
         #endregion
 
