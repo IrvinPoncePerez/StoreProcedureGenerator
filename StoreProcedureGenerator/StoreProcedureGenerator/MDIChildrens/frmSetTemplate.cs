@@ -39,7 +39,7 @@ namespace StoreProcedureGenerator.MDIChildrens
 
             Template objTemplate;
             string[] KeyWords = {"<Database_Name>", 
-                                 "<Author>|<Creation_Date>|<Description>", 
+                                 "<Creation_Date>", 
                                  "<Schema>",
                                  "<Table_Name>",
                                  "<Data_Type>", 
@@ -63,8 +63,6 @@ namespace StoreProcedureGenerator.MDIChildrens
                 {
                     txtTemplateName.Text = objTemplate.TemplateName;
                     txtFileName.Text = objTemplate.FileName;
-                    txtAuthor.Text = objTemplate.Author;
-                    txtDescription.Text = objTemplate.Description;
                     txtExtension.Text = objTemplate.Extension;
                     txtTemplateCode.Lines = objTemplate.TemplateCode;
                 }
@@ -88,8 +86,6 @@ namespace StoreProcedureGenerator.MDIChildrens
                     {                       
                         objTemplate.TemplateName = txtTemplateName.Text;
                         objTemplate.FileName = txtFileName.Text;
-                        objTemplate.Author = txtAuthor.Text;
-                        objTemplate.Description = txtDescription.Text;
                         objTemplate.Extension = txtExtension.Text;
                         objTemplate.TemplateCode = txtTemplateCode.Lines;
 
@@ -131,16 +127,6 @@ namespace StoreProcedureGenerator.MDIChildrens
                 }
 
                 if (txtFileName.Text != String.Empty)
-                {
-                    return false;
-                }
-
-                if (txtAuthor.Text != String.Empty)
-                {
-                    return false;
-                }
-
-                if (txtDescription.Text != String.Empty)
                 {
                     return false;
                 }

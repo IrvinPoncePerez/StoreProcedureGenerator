@@ -88,7 +88,12 @@ namespace StoreProcedureGenerator.View
                     objDatabases = objConnection.GetSchema("Databases");
                 }
                 catch (Exception ex)
-                { }
+                {
+                    MessageBox.Show(ex.Message,
+                                    "Get Databases",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
                 finally
                 {
                     objConnection.Close();
@@ -116,6 +121,10 @@ namespace StoreProcedureGenerator.View
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message,
+                                    "Get Tables",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
                 finally
                 {
