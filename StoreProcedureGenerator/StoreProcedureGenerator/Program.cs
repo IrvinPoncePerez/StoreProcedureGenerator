@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace StoreProcedureGenerator
 {
     static class Program
     {
+
+        private static Mutex objMutex;
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -15,7 +19,15 @@ namespace StoreProcedureGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MDIMaster());
+
+            bool isRun;
+            objMutex = new Mutex(true, "StoredProcedureGenerator", out isRun);
+
+            if (isRun)
+            {
+                Application.Run(new MDIMaster());
+            }
+            
         }
     }
 }
