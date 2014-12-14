@@ -44,14 +44,16 @@ namespace StoreProcedureGenerator.MDIChildrens
                                  "<Table_Name>|<TABLE_NAME>",
                                  "<Data_Type>", 
                                  "<Params>", 
-                                 "<Attribute>|<@Attribute>"};
+                                 "<Attribute>",
+                                 "<Except_Last>"};
             Color[] colors = {Color.Red,
                               Color.DarkGray, 
                               Color.Aqua,
                               Color.Blue,
                               Color.Pink,
                               Color.Fuchsia,
-                              Color.Green};
+                              Color.Green,
+                              Color.Brown};
 
         #endregion
 

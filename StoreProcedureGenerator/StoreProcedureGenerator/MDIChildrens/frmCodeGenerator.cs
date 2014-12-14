@@ -246,6 +246,7 @@ namespace StoreProcedureGenerator.MDIChildrens
                 foreach (string lineCode in objTemplate.TemplateCode)
                 {
                     string line = lineCode;
+                    bool Except_Last = false;
 
                     if (lineCode.Contains("<Database_Name>"))
                     {
@@ -273,17 +274,26 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                     if (lineCode.Contains("<Params>"))
                     {
+
+                        if (lineCode.Contains("<Except_Last>"))
+                        {
+                            Except_Last = true;
+                        }
+                        else
+                        {
+                            Except_Last = false;
+                        }
                         
                         for (int i = 1; i < dgvTableView.Rows.Count; i++)
                         {
                             line = lineCode.Replace("<Params>", "");
+                            line = line.Replace("<Except_Last>", "");
 
                             using (DataGridViewRow row = dgvTableView.Rows[i])
                             {
                                 string strDataType = row.Cells["colType"].ToString();
 
                                 line = line.Replace("<Attribute>", row.Cells["colColumn"].Value.ToString());
-                                line = line.Replace("<@Attribute>", "@" + row.Cells["colColumn"].Value.ToString());
 
                                 if (dgvTableView.Rows[i].Cells["colLength"].Value.ToString() != "" && objTemplate.Extension == "sql")
                                 {
@@ -293,6 +303,14 @@ namespace StoreProcedureGenerator.MDIChildrens
                                 {
                                     line = line.Replace("<Data_Type>", this.getDataType(row.Cells["colType"].Value.ToString(), objTemplate.Extension));
                                 }
+                            }
+
+                            
+                            if (i == dgvTableView.Rows.Count - 1 && Except_Last == true)
+                            {
+                                int index = lineCode.IndexOf("<Except_Last>");
+                                string strLast = lineCode.Substring(index - 1, 1);
+                                line = line.Replace(strLast, "");
                             }
 
                             objFile.WriteLine(line);
