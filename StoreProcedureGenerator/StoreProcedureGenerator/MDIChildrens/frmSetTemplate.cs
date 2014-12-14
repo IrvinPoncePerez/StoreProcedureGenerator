@@ -41,7 +41,7 @@ namespace StoreProcedureGenerator.MDIChildrens
             string[] KeyWords = {"<Database_Name>", 
                                  "<Creation_Date>", 
                                  "<Schema>",
-                                 "<Table_Name>",
+                                 "<Table_Name>|<TABLE_NAME>",
                                  "<Data_Type>", 
                                  "<Params>", 
                                  "<Attribute>|<@Attribute>"};

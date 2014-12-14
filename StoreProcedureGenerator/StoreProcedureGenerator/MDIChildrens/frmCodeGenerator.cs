@@ -42,6 +42,7 @@ namespace StoreProcedureGenerator.MDIChildrens
             private string database_name;
             private string table_name;
             private string schema_name;
+            private DataTable DataTypes;
 
         #endregion
 
@@ -95,6 +96,8 @@ namespace StoreProcedureGenerator.MDIChildrens
                 this.txtPath.Text = StaticMain.DefaultPath;
                 DataTable objTableItems = this.GetTableItems();
                 dgvTableView.DataSource = objTableItems;
+
+                this.LoadDataTypes();
             }
 
         #endregion
@@ -173,7 +176,13 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                 try
                 {
-                    path += objTemplate.FileName.Replace("<Table_Name>", this.table_name.ToUpper());
+                    if (objTemplate.FileName.Contains("<Table_Name>")){
+                        path += objTemplate.FileName.Replace("<Table_Name>", this.table_name);
+                    }
+                    else if (objTemplate.FileName.Contains("<TABLE_NAME>"))
+                    {
+                        path += objTemplate.FileName.Replace("<TABLE_NAME>", this.table_name.ToUpper());
+                    }
                     path += "." + objTemplate.Extension;
                     objFile = new StreamWriter(path);
                 }
@@ -216,6 +225,18 @@ namespace StoreProcedureGenerator.MDIChildrens
                 return objTime;
             }
 
+            private string getDataType(string DataType, string extension)
+            {
+                string strDataType = string.Empty;
+
+                DataView objView = new DataView(DataTypes);
+                objView.RowFilter = " sql = " + "'" + DataType + "'";
+                DataTable objTable = objView.ToTable();
+                strDataType = objTable.Rows[0][extension].ToString();
+
+                return strDataType;
+            }
+
         #endregion
 
         #region "Form Methods"
@@ -240,6 +261,10 @@ namespace StoreProcedureGenerator.MDIChildrens
                     {
                         line = line.Replace("<Table_Name>", this.table_name);
                     }
+                    else if (lineCode.Contains("<TABLE_NAME>"))
+                    {
+                        line = line.Replace("<TABLE_NAME>", this.table_name.ToUpper());
+                    }
 
                     if (lineCode.Contains("<Creation_Date>"))
                     {
@@ -248,10 +273,53 @@ namespace StoreProcedureGenerator.MDIChildrens
 
                     if (lineCode.Contains("<Params>"))
                     {
-                        //working here.
+                        
+                        for (int i = 1; i < dgvTableView.Rows.Count; i++)
+                        {
+                            line = lineCode.Replace("<Params>", "");
+
+                            using (DataGridViewRow row = dgvTableView.Rows[i])
+                            {
+                                string strDataType = row.Cells["colType"].ToString();
+
+                                line = line.Replace("<Attribute>", row.Cells["colColumn"].Value.ToString());
+                                line = line.Replace("<@Attribute>", "@" + row.Cells["colColumn"].Value.ToString());
+
+                                if (dgvTableView.Rows[i].Cells["colLength"].Value.ToString() != "" && objTemplate.Extension == "sql")
+                                {
+                                    line = line.Replace("<Data_Type>", this.getDataType(row.Cells["colType"].Value.ToString(), objTemplate.Extension) + "(" + row.Cells["colLength"].Value.ToString() + ")");
+                                }
+                                else
+                                {
+                                    line = line.Replace("<Data_Type>", this.getDataType(row.Cells["colType"].Value.ToString(), objTemplate.Extension));
+                                }
+                            }
+
+                            objFile.WriteLine(line);
+                        }
+
+                        continue;
                     }
 
                     objFile.WriteLine(line);
+                }
+            }
+
+            private void LoadDataTypes()
+            {
+                try
+                {
+                    FileStream objStream = new FileStream(Application.StartupPath + "\\DataTypes.xml", FileMode.Open);
+                    XmlSerializer objSerializer = new XmlSerializer(typeof(DataTable));
+                    this.DataTypes = (DataTable)objSerializer.Deserialize(objStream);
+                    objStream.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                                    "Load Data Types",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
             }
 
